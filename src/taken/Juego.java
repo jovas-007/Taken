@@ -24,6 +24,7 @@ public class Juego extends javax.swing.JFrame {
 
     public Juego() {
         initComponents();
+        /// Inicializa el tablero y vincula los botones
         inicializarTablero();
         vincularBotones();
 
@@ -64,7 +65,7 @@ public class Juego extends javax.swing.JFrame {
                 { nueve, diez, once, doce },
                 { trece, catorce, quince, vacio }
         };
-
+        /// Vincula los botones con el método moverFicha() para que se muevan
         actualizarInterfaz();
     }
 
@@ -104,9 +105,11 @@ public class Juego extends javax.swing.JFrame {
             actualizarInterfaz();
         }
         contadorMovimientos++;
+        /// Actualiza el contador de movimientos
         actualizarContadorMovimientos();
     }
 
+    /// Actualiza los botones de la interfaz con los valores del tablero
     private void actualizarInterfaz() {
         /// Actualiza los botones de la interfaz con los valores del tablero
         for (int i = 0; i < 4; i++) {
@@ -361,73 +364,73 @@ public class Juego extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void doceActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_doceActionPerformed
-        moverFicha(2, 3);
-    }// GEN-LAST:event_doceActionPerformed
-
-    private void seisActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_seisActionPerformed
-        moverFicha(1, 1);
-    }// GEN-LAST:event_seisActionPerformed
-
-    private void cuatroActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cuatroActionPerformed
-        moverFicha(0, 3);
-    }// GEN-LAST:event_cuatroActionPerformed
-
-    private void cincoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cincoActionPerformed
-        moverFicha(1, 0);
-    }// GEN-LAST:event_cincoActionPerformed
-
-    private void unoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_unoActionPerformed
+    private void unoActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(0, 0);
-    }// GEN-LAST:event_unoActionPerformed
+    }
 
-    private void dosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_dosActionPerformed
+    private void dosActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(0, 1);
-    }// GEN-LAST:event_dosActionPerformed
+    }
 
-    private void reiniciarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_reiniciarActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_reiniciarActionPerformed
-
-    private void vacioActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_vacioActionPerformed
-        moverFicha(3, 3);
-    }// GEN-LAST:event_vacioActionPerformed
-
-    private void ochoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ochoActionPerformed
-        moverFicha(1, 3);
-    }// GEN-LAST:event_ochoActionPerformed
-
-    private void treceActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_treceActionPerformed
-        moverFicha(3, 0);
-    }// GEN-LAST:event_treceActionPerformed
-
-    private void tresActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tresActionPerformed
+    private void tresActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(0, 2);
-    }// GEN-LAST:event_tresActionPerformed
+    }
 
-    private void sieteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_sieteActionPerformed
+    private void cuatroActionPerformed(java.awt.event.ActionEvent evt) {
+        moverFicha(0, 3);
+    }
+
+    private void cincoActionPerformed(java.awt.event.ActionEvent evt) {
+        moverFicha(1, 0);
+    }
+
+    private void seisActionPerformed(java.awt.event.ActionEvent evt) {
+        moverFicha(1, 1);
+    }
+
+    private void sieteActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(1, 2);
-    }// GEN-LAST:event_sieteActionPerformed
+    }
 
-    private void nueveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_nueveActionPerformed
+    private void ochoActionPerformed(java.awt.event.ActionEvent evt) {
+        moverFicha(1, 3);
+    }
+
+    private void nueveActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(2, 0);
-    }// GEN-LAST:event_nueveActionPerformed
+    }
 
-    private void diezActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_diezActionPerformed
+    private void diezActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(2, 1);
-    }// GEN-LAST:event_diezActionPerformed
+    }
 
-    private void onceActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_onceActionPerformed
+    private void onceActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(2, 2);
-    }// GEN-LAST:event_onceActionPerformed
+    }
 
-    private void catorceActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_catorceActionPerformed
+    private void doceActionPerformed(java.awt.event.ActionEvent evt) {
+        moverFicha(2, 3);
+    }
+
+    private void treceActionPerformed(java.awt.event.ActionEvent evt) {
+        moverFicha(3, 0);
+    }
+
+    private void catorceActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(3, 1);
-    }// GEN-LAST:event_catorceActionPerformed
+    }
 
-    private void quinceActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_quinceActionPerformed
+    private void quinceActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(3, 2);
-    }// GEN-LAST:event_quinceActionPerformed
+    }
+
+    private void vacioActionPerformed(java.awt.event.ActionEvent evt) {
+        moverFicha(3, 3);
+    }
+
+    private void reiniciarActionPerformed(java.awt.event.ActionEvent evt) {
+        // Aquí va la lógica para reiniciar el juego
+    }
 
     /**
      * @param args the command line arguments
