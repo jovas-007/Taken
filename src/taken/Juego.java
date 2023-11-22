@@ -11,7 +11,7 @@ import javax.swing.JButton;
  * @author jovas
  */
 public class Juego extends javax.swing.JFrame {
-    private int[][] tablero; // Representación del tablero como matriz bidimensional
+     private int[][] tablero; // Representación del tablero como matriz bidimensional
     /*
      * 1 2 3 4
      * 5 6 7 8
@@ -20,119 +20,239 @@ public class Juego extends javax.swing.JFrame {
      * 
      */
     private JButton[][] botones; // Botones de la interfaz
-    private int contadorMovimientos = 0;
+    private ListaLigada listaLigada; 
+    private int contadorMovimientos; 
 
     public Juego() {
         initComponents();
-        /// Inicializa el tablero y vincula los botones
         inicializarTablero();
         vincularBotones();
-
+        listaLigada = new ListaLigada(4);
+        int contadorMovimientos=0;
     }
 
     private void inicializarTablero() {
-        // Tablero de 4x4 para el juego del 15
         tablero = new int[4][4];
-        // Inicializa el tablero con la configuración inicial
         int contador = 1;
-
-        /// Este ciclo llena el tablero con los números del 1 al 15
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (contador <= 15) {
+                if (contador < 16) {
                     tablero[i][j] = contador++;
                 } else {
-                    /// El último espacio se inicializa en 0
-                    tablero[i][j] = 0;
+                    tablero[i][j] = 0; // Espacio vacío
                 }
             }
         }
-        // Intercambia dos fichas para la configuración inicial
-        /// Esto es para que el juego sea resoluble
-        /// Si se comenta, el juego puede no ser resoluble
-        int temp = tablero[3][2];
-        /// Intercambia la posición de los números 14 y 15
-        tablero[3][2] = tablero[3][1];
-        /// Esta línea es para que el juego sea resoluble
-        tablero[3][1] = temp;
     }
 
-    private void vincularBotones() {
-        /// Crea una matriz de botones para la interfaz
-        botones = new JButton[][] {
-                { uno, dos, tres, cuatro },
-                { cinco, seis, siete, ocho },
-                { nueve, diez, once, doce },
-                { trece, catorce, quince, vacio }
-        };
-        /// Vincula los botones con el método moverFicha() para que se muevan
-        actualizarInterfaz();
+    public class Nodo {
+    int valor; // Valor del nodo, 0 para el espacio vacío
+    int fila; // Fila del nodo en el tablero
+    int columna; // Columna del nodo en el tablero
+    Nodo anterior; // Referencia al nodo anterior en la lista
+    Nodo siguiente; // Referencia al nodo siguiente en la lista
+
+    // Constructor para inicializar el nodo
+    public Nodo(int valor, int fila, int columna) {
+        this.valor = valor;
+        this.fila = fila;
+        this.columna = columna;
+        this.anterior = null;
+        this.siguiente = null;
     }
 
-    /// Mueve una ficha a la posición del espacio vacío (si es posible)
-    private void moverFicha(int fila, int columna) {
-        // Encuentra la posición del espacio vacío
-        /// Si no hay espacio vacío, no hace nada
-
-        /// Inicializa las variables en -1 para saber si se encontró el espacio vacío
-        int filaVacia = -1, columnaVacia = -1;
-
-        /// Busca la posición del espacio vacío en el tablero
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                /// Si la posición es 0, es el espacio vacío
-                if (tablero[i][j] == 0) {
-                    filaVacia = i;
-                    columnaVacia = j;
-                    break;
-                }
-            }
-        }
-        // Verifica si la ficha se puede mover (adyacente al espacio vacío)
-        /// Math.abs() devuelve el valor absoluto de un número
-        /// Por ejemplo, Math.abs(-5) devuelve 5
-        /// esto es para que no importe si la ficha está arriba o abajo del espacio
-        // vacío
-        if ((Math.abs(filaVacia - fila) == 1 && columnaVacia == columna) ||
-                (Math.abs(columnaVacia - columna) == 1 && filaVacia == fila)) {
-            // Intercambia la ficha con el espacio vacío
-            /// Por ejemplo, si la ficha está arriba del espacio vacío
-            /// la ficha se mueve hacia arriba y el espacio vacío hacia abajo
-            tablero[filaVacia][columnaVacia] = tablero[fila][columna];
-            tablero[fila][columna] = 0;
-
-            // Actualiza la interfaz
-            actualizarInterfaz();
-            contadorMovimientos++;
-        /// Actualiza el contador de movimientos
-        actualizarContadorMovimientos();
-        }
-        
+    // Métodos getters y setters para valor, fila, columna, anterior y siguiente
+    public int getValor() {
+        return valor;
     }
 
-    /// Actualiza los botones de la interfaz con los valores del tablero
-    private void actualizarInterfaz() {
-        /// Actualiza los botones de la interfaz con los valores del tablero
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
 
-                /// Si el valor es 0, el botón se muestra vacío
-                if (tablero[i][j] == 0) {
-                    /// El botón vacío no muestra ningún texto (está vacío)
-                    botones[i][j].setText("");
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
+    }
+
+    public int getColumna() {
+        return columna;
+    }
+
+    public void setColumna(int columna) {
+        this.columna = columna;
+    }
+
+    public Nodo getAnterior() {
+        return anterior;
+    }
+
+    public void setAnterior(Nodo anterior) {
+        this.anterior = anterior;
+    }
+
+    public Nodo getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(Nodo siguiente) {
+        this.siguiente = siguiente;
+    }
+}
+
+    
+    
+    class ListaLigada {
+    Nodo cabeza;
+    Nodo nodoVacio; // Nodo que representa el espacio vacío en el tablero
+    int dimension; // Dimension del tablero, por ejemplo, 4 para un tablero 4x4
+
+    public ListaLigada(int dimension) {
+        this.dimension = dimension;
+        this.cabeza = null;
+        Nodo ultimo = null; // Referencia al último nodo agregado
+
+        int contador = 1; // Contador para asignar valores a los nodos
+
+        // Crear nodos para cada posición del tablero
+        for (int fila = 0; fila < dimension; fila++) {
+            for (int columna = 0; columna < dimension; columna++) {
+                Nodo nuevoNodo = new Nodo(contador, fila, columna);
+
+                // Si la lista está vacía, el nuevo nodo es la cabeza
+                if (this.cabeza == null) {
+                    this.cabeza = nuevoNodo;
                 } else {
-                    /// Si no, muestra el número correspondiente
-                    /// String.valueOf() convierte un número a String
-                    botones[i][j].setText(String.valueOf(tablero[i][j]));
+                    // Enlazar el nuevo nodo con el último nodo
+                    ultimo.setSiguiente(nuevoNodo);
+                    nuevoNodo.setAnterior(ultimo);
+                }
+
+                // Actualizar el último nodo agregado
+                ultimo = nuevoNodo;
+
+                // Incrementar el contador, el último nodo será el espacio vacío
+                if (contador < dimension * dimension) {
+                    contador++;
+                } else {
+                    // El último nodo es el espacio vacío
+                    nuevoNodo.setValor(0);
+                    this.nodoVacio = nuevoNodo;
                 }
             }
         }
     }
 
-    /// Actualiza el contador de movimientos en el JtextPane
-    private void actualizarContadorMovimientos() {
-        movs.setText("Movimientos: " + contadorMovimientos);
+
+    // Método para mover un nodo
+    public boolean moverNodo(int valor) {
+        Nodo nodoObjetivo = encontrarNodo(valor);
+        if (nodoObjetivo == null || nodoVacio == null) {
+            return false; // Nodo no encontrado o no hay nodo vacío
+        }
+
+        // Verifica si el nodo objetivo es adyacente al nodo vacío
+        if (esAdyacente(nodoObjetivo, nodoVacio)) {
+            // Intercambia los valores de los nodos
+            int temp = nodoVacio.valor;
+            nodoVacio.valor = nodoObjetivo.valor;
+            nodoObjetivo.valor = temp;
+
+            // Actualiza el nodo vacío
+            nodoVacio = nodoObjetivo;
+            return true;
+        }
+
+        return false;
     }
+
+    // Método para verificar si dos nodos son adyacentes
+    private boolean esAdyacente(Nodo nodo1, Nodo nodo2) {
+        // Verifica si los nodos son adyacentes en un tablero 2D
+        return Math.abs(nodo1.fila - nodo2.fila) + Math.abs(nodo1.columna - nodo2.columna) == 1;
+    }
+
+    // Método para encontrar un nodo con un valor específico
+    public Nodo encontrarNodo(int valor) {
+        Nodo temp = cabeza;
+        while (temp != null) {
+            if (temp.valor == valor) {
+                return temp;
+            }
+            temp = temp.siguiente;
+        }
+        return null; // No se encontró el nodo
+    }
+
+
+}
+    
+    
+    
+    private void moverFicha(int fila, int columna) {
+    // Obtener el valor del nodo en la posición dada
+    int valorDelNodo = tablero[fila][columna];
+
+    // Verificar si el nodo seleccionado no es el espacio vacío
+    if (valorDelNodo != 0) {
+        // Intentar mover el nodo
+        if (listaLigada.moverNodo(valorDelNodo)) { // Suponiendo que moverNodo devuelve true si el movimiento es válido
+            contadorMovimientos++; // Incrementa el contador solo si el movimiento es válido
+            actualizarContadorMovimientos(); // Actualiza el contador en la interfaz
+            actualizarTableroYInterfaz(); // Actualiza el tablero y la interfaz después del movimiento
+        }
+    }
+}
+
+// Método para actualizar el contador de movimientos en la interfaz
+private void actualizarContadorMovimientos() {
+    movs.setText("Movimientos: " + contadorMovimientos);
+}
+
+// Método para actualizar el tablero y la interfaz
+private void actualizarTableroYInterfaz() {
+    // Recorrer la lista ligada para actualizar la matriz tablero
+    Nodo actual = listaLigada.cabeza;
+    while (actual != null) {
+        tablero[actual.getFila()][actual.getColumna()] = actual.getValor();
+        actual = actual.getSiguiente();
+    }
+
+    // Actualizar los botones de la interfaz
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (tablero[i][j] != 0) {
+                botones[i][j].setText(String.valueOf(tablero[i][j]));
+            } else {
+                botones[i][j].setText(""); // Espacio vacío
+            }
+        }
+    }
+}
+
+
+
+private void vincularBotones() {
+    botones = new JButton[][] {
+        {uno, dos, tres, cuatro},
+        {cinco, seis, siete, ocho},
+        {nueve, diez, once, doce},
+        {trece, catorce, quince, vacio}
+    };
+
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (tablero[i][j] != 0) {
+                botones[i][j].setText(String.valueOf(tablero[i][j]));
+            } else {
+                botones[i][j].setText(""); // Espacio vacío
+            }
+        }
+    }
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -430,19 +550,17 @@ public class Juego extends javax.swing.JFrame {
         moverFicha(3, 3);
     }
 
-    private void reiniciarActionPerformed(java.awt.event.ActionEvent evt) {
-    // Restablece el tablero a su estado inicial
+   private void reiniciarActionPerformed(java.awt.event.ActionEvent evt) {
+    // Restablece la lista ligada
+    listaLigada = new ListaLigada(4); // Asumiendo que la dimensión del tablero es 4x4
+
+    // Restablece el tablero y actualiza la interfaz
     inicializarTablero();
+    actualizarTableroYInterfaz();
 
-    // Reinicia el contador de movimientos
-    contadorMovimientos = 0;
-
-    // Actualiza la interfaz para reflejar los cambios
-    actualizarInterfaz();
-
-    // Actualiza el contador de movimientos en la interfaz
-    actualizarContadorMovimientos();
-    }
+    contadorMovimientos = 0; // Reinicia el contador de movimientos
+    actualizarContadorMovimientos(); // Actualiza el contador en la interfaz
+}
 
     /**
      * @param args the command line arguments
