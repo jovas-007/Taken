@@ -136,7 +136,7 @@ public class Juego extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         Titulo = new javax.swing.JLabel();
@@ -353,6 +353,7 @@ public class Juego extends javax.swing.JFrame {
         movs.setBackground(new java.awt.Color(0, 153, 153));
         movs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         movs.setFont(new java.awt.Font("Segoe Print", 3, 22)); // NOI18N
+        movs.setText("Movimientos: 0");
         movs.setToolTipText("");
         movs.setSelectedTextColor(new java.awt.Color(0, 153, 153));
         jScrollPane1.setViewportView(movs);
@@ -430,7 +431,17 @@ public class Juego extends javax.swing.JFrame {
     }
 
     private void reiniciarActionPerformed(java.awt.event.ActionEvent evt) {
-        // Aquí va la lógica para reiniciar el juego
+    // Restablece el tablero a su estado inicial
+    inicializarTablero();
+
+    // Reinicia el contador de movimientos
+    contadorMovimientos = 0;
+
+    // Actualiza la interfaz para reflejar los cambios
+    actualizarInterfaz();
+
+    // Actualiza el contador de movimientos en la interfaz
+    actualizarContadorMovimientos();
     }
 
     /**

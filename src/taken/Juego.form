@@ -422,6 +422,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe Print" size="22" style="3"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="Movimientos: 0"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="selectedTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
