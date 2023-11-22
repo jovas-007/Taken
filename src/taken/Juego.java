@@ -103,10 +103,11 @@ public class Juego extends javax.swing.JFrame {
 
             // Actualiza la interfaz
             actualizarInterfaz();
-        }
-        contadorMovimientos++;
+            contadorMovimientos++;
         /// Actualiza el contador de movimientos
         actualizarContadorMovimientos();
+        }
+        
     }
 
     /// Actualiza los botones de la interfaz con los valores del tablero
