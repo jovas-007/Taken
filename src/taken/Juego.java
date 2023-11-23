@@ -209,7 +209,7 @@ public class Juego extends javax.swing.JFrame {
 
 // Método para actualizar el contador de movimientos en la interfaz
 private void actualizarContadorMovimientos() {
-    movs.setText("Movimientos: " + contadorMovimientos);
+    movs.setText(" Movimientos: " + contadorMovimientos);
 }
 
 // Método para actualizar el tablero y la interfaz
@@ -275,6 +275,7 @@ private void vincularBotones() {
         trece = new javax.swing.JButton();
         catorce = new javax.swing.JButton();
         quince = new javax.swing.JButton();
+        solucion = new javax.swing.JButton();
         vacio = new javax.swing.JButton();
         separador = new javax.swing.JSeparator();
         reiniciar = new javax.swing.JButton();
@@ -290,13 +291,14 @@ private void vincularBotones() {
 
         Titulo.setBackground(new java.awt.Color(0, 204, 204));
         Titulo.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 2, 24)); // NOI18N
-        Titulo.setForeground(new java.awt.Color(0, 51, 51));
+        Titulo.setForeground(new java.awt.Color(204, 204, 204));
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo.setText("Juego del 15 (Taken)");
         getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 13, 425, 48));
 
-        uno.setBackground(new java.awt.Color(153, 204, 255));
+        uno.setBackground(new java.awt.Color(0, 153, 255));
         uno.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        uno.setForeground(new java.awt.Color(255, 255, 255));
         uno.setText("1");
         uno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uno.addActionListener(new java.awt.event.ActionListener() {
@@ -306,8 +308,9 @@ private void vincularBotones() {
         });
         getContentPane().add(uno, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 79, 90, 90));
 
-        dos.setBackground(new java.awt.Color(0, 204, 153));
+        dos.setBackground(new java.awt.Color(0, 153, 153));
         dos.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        dos.setForeground(new java.awt.Color(255, 255, 255));
         dos.setText("2");
         dos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,8 +319,9 @@ private void vincularBotones() {
         });
         getContentPane().add(dos, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 79, 90, 90));
 
-        tres.setBackground(new java.awt.Color(153, 204, 255));
+        tres.setBackground(new java.awt.Color(0, 153, 255));
         tres.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        tres.setForeground(new java.awt.Color(255, 255, 255));
         tres.setText("3");
         tres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,8 +330,9 @@ private void vincularBotones() {
         });
         getContentPane().add(tres, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 79, 90, 90));
 
-        cuatro.setBackground(new java.awt.Color(0, 204, 153));
+        cuatro.setBackground(new java.awt.Color(0, 153, 153));
         cuatro.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        cuatro.setForeground(new java.awt.Color(255, 255, 255));
         cuatro.setText("4");
         cuatro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,8 +341,9 @@ private void vincularBotones() {
         });
         getContentPane().add(cuatro, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 79, 90, 90));
 
-        cinco.setBackground(new java.awt.Color(153, 204, 255));
+        cinco.setBackground(new java.awt.Color(0, 153, 255));
         cinco.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        cinco.setForeground(new java.awt.Color(255, 255, 255));
         cinco.setText("5");
         cinco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,8 +352,9 @@ private void vincularBotones() {
         });
         getContentPane().add(cinco, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 176, 90, 90));
 
-        seis.setBackground(new java.awt.Color(0, 204, 153));
+        seis.setBackground(new java.awt.Color(0, 153, 153));
         seis.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        seis.setForeground(new java.awt.Color(255, 255, 255));
         seis.setText("6");
         seis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,8 +363,9 @@ private void vincularBotones() {
         });
         getContentPane().add(seis, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 176, 90, 90));
 
-        siete.setBackground(new java.awt.Color(153, 204, 255));
+        siete.setBackground(new java.awt.Color(0, 153, 255));
         siete.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        siete.setForeground(new java.awt.Color(255, 255, 255));
         siete.setText("7");
         siete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -366,8 +374,9 @@ private void vincularBotones() {
         });
         getContentPane().add(siete, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 176, 90, 90));
 
-        ocho.setBackground(new java.awt.Color(0, 204, 153));
+        ocho.setBackground(new java.awt.Color(0, 153, 153));
         ocho.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        ocho.setForeground(new java.awt.Color(255, 255, 255));
         ocho.setText("8");
         ocho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,8 +385,9 @@ private void vincularBotones() {
         });
         getContentPane().add(ocho, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 176, 90, 90));
 
-        nueve.setBackground(new java.awt.Color(153, 204, 255));
+        nueve.setBackground(new java.awt.Color(0, 153, 255));
         nueve.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        nueve.setForeground(new java.awt.Color(255, 255, 255));
         nueve.setText("9");
         nueve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,8 +396,9 @@ private void vincularBotones() {
         });
         getContentPane().add(nueve, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 273, 90, 90));
 
-        diez.setBackground(new java.awt.Color(0, 204, 153));
+        diez.setBackground(new java.awt.Color(0, 153, 153));
         diez.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        diez.setForeground(new java.awt.Color(255, 255, 255));
         diez.setText("10");
         diez.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,8 +407,9 @@ private void vincularBotones() {
         });
         getContentPane().add(diez, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 273, 90, 90));
 
-        once.setBackground(new java.awt.Color(153, 204, 255));
+        once.setBackground(new java.awt.Color(0, 153, 255));
         once.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        once.setForeground(new java.awt.Color(255, 255, 255));
         once.setText("11");
         once.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -406,8 +418,9 @@ private void vincularBotones() {
         });
         getContentPane().add(once, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 273, 90, 90));
 
-        doce.setBackground(new java.awt.Color(0, 204, 153));
+        doce.setBackground(new java.awt.Color(0, 153, 153));
         doce.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        doce.setForeground(new java.awt.Color(255, 255, 255));
         doce.setText("12");
         doce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -416,8 +429,9 @@ private void vincularBotones() {
         });
         getContentPane().add(doce, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 273, 90, 90));
 
-        trece.setBackground(new java.awt.Color(153, 204, 255));
+        trece.setBackground(new java.awt.Color(0, 153, 255));
         trece.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        trece.setForeground(new java.awt.Color(255, 255, 255));
         trece.setText("13");
         trece.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -426,8 +440,9 @@ private void vincularBotones() {
         });
         getContentPane().add(trece, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 370, 90, 90));
 
-        catorce.setBackground(new java.awt.Color(0, 204, 153));
+        catorce.setBackground(new java.awt.Color(0, 153, 153));
         catorce.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        catorce.setForeground(new java.awt.Color(255, 255, 255));
         catorce.setText("14");
         catorce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -436,8 +451,9 @@ private void vincularBotones() {
         });
         getContentPane().add(catorce, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 370, 90, 90));
 
-        quince.setBackground(new java.awt.Color(153, 204, 255));
+        quince.setBackground(new java.awt.Color(0, 153, 255));
         quince.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        quince.setForeground(new java.awt.Color(255, 255, 255));
         quince.setText("15");
         quince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,8 +462,12 @@ private void vincularBotones() {
         });
         getContentPane().add(quince, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 370, 90, 90));
 
-        vacio.setBackground(new java.awt.Color(0, 204, 153));
+        solucion.setText("Ver Soluciones");
+        getContentPane().add(solucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 570, -1, -1));
+
+        vacio.setBackground(new java.awt.Color(0, 153, 153));
         vacio.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        vacio.setForeground(new java.awt.Color(255, 255, 255));
         vacio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vacioActionPerformed(evt);
@@ -473,14 +493,14 @@ private void vincularBotones() {
         movs.setBackground(new java.awt.Color(0, 153, 153));
         movs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         movs.setFont(new java.awt.Font("Segoe Print", 3, 22)); // NOI18N
-        movs.setText("Movimientos: 0");
+        movs.setText(" Movimientos: 0");
         movs.setToolTipText("");
         movs.setSelectedTextColor(new java.awt.Color(0, 153, 153));
         jScrollPane1.setViewportView(movs);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 280, 70));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img2.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/DALL·E 2023-11-22 23.56.57 - A simple, wide background with a smooth gradient, using slightly darker shades of blue and green. The background should be completely plain, without a.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -90, 470, 720));
 
         pack();
@@ -620,6 +640,7 @@ private void vincularBotones() {
     private javax.swing.JButton seis;
     private javax.swing.JSeparator separador;
     private javax.swing.JButton siete;
+    private javax.swing.JButton solucion;
     private javax.swing.JButton trece;
     private javax.swing.JButton tres;
     private javax.swing.JButton uno;
