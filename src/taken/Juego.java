@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package taken;
+import java.awt.Color;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,6 +32,8 @@ public class Juego extends javax.swing.JFrame {
         listaLigada = new ListaLigada(4);
         int contadorMovimientos=0;
     }
+    
+    
 
     private void inicializarTablero() {
         tablero = new int[4][4];
@@ -189,8 +193,7 @@ public class Juego extends javax.swing.JFrame {
 
 
 }
-    
-    
+      
     
     private void moverFicha(int fila, int columna) {
     // Obtener el valor del nodo en la posición dada
@@ -203,7 +206,67 @@ public class Juego extends javax.swing.JFrame {
             contadorMovimientos++; // Incrementa el contador solo si el movimiento es válido
             actualizarContadorMovimientos(); // Actualiza el contador en la interfaz
             actualizarTableroYInterfaz(); // Actualiza el tablero y la interfaz después del movimiento
+            if (esGanador()) {
+        mostrarMensajeGanador();
+            }
         }
+    }
+    
+} 
+    
+    private void mostrarMensajeGanador() {
+    // Opciones para los botones
+    Object[] opciones = {"Reiniciar", "Cerrar"};
+
+    // Mostrar el JOptionPane con dos botones
+    int eleccion = JOptionPane.showOptionDialog(this, 
+    "¡Felicidades! Has ganado el juego en " + contadorMovimientos + " movimientos.", "Juego Terminado", 
+    JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, 
+    null, opciones, opciones[0]);
+
+    
+    // Acciones según la elección del usuario
+    if (eleccion == JOptionPane.YES_OPTION) {
+        // Restablece la lista ligada
+    listaLigada = new ListaLigada(4); 
+
+    // Restablece el tablero y actualiza la interfaz
+    inicializarTablero();
+    actualizarTableroYInterfaz();
+
+    contadorMovimientos = 0; // Reinicia el contador de movimientos
+    actualizarContadorMovimientos(); // Actualiza el contador en la interfaz
+    } else if (eleccion == JOptionPane.NO_OPTION) {
+        // Cerrar el juego
+        System.exit(0);
+        
+
+    }
+}
+
+
+
+// Método para actualizar el tablero y la interfaz
+private void actualizarTableroYInterfaz() {
+    Nodo actual = listaLigada.cabeza;
+    while (actual != null) {
+        tablero[actual.getFila()][actual.getColumna()] = actual.getValor();
+        JButton botonActual = botones[actual.getFila()][actual.getColumna()];
+
+        if (actual.getValor() != 0) {
+            botonActual.setText(String.valueOf(actual.getValor()));
+            // Cambiar el color según si el número es par o impar
+            if (actual.getValor() % 2 == 0) {
+                botonActual.setBackground(new Color(0, 153, 153)); // Color para números pares
+            } else {
+                botonActual.setBackground(new Color(0, 153, 255)); // Color para números impares
+            }
+        } else {
+            botonActual.setText(""); // Espacio vacío
+            botonActual.setBackground(Color.GRAY); // Color para el espacio vacío
+        }
+
+        actual = actual.getSiguiente();
     }
 }
 
@@ -212,29 +275,8 @@ private void actualizarContadorMovimientos() {
     movs.setText(" Movimientos: " + contadorMovimientos);
 }
 
-// Método para actualizar el tablero y la interfaz
-private void actualizarTableroYInterfaz() {
-    // Recorrer la lista ligada para actualizar la matriz tablero
-    Nodo actual = listaLigada.cabeza;
-    while (actual != null) {
-        tablero[actual.getFila()][actual.getColumna()] = actual.getValor();
-        actual = actual.getSiguiente();
-    }
 
-    // Actualizar los botones de la interfaz
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (tablero[i][j] != 0) {
-                botones[i][j].setText(String.valueOf(tablero[i][j]));
-            } else {
-                botones[i][j].setText(""); // Espacio vacío
-            }
-        }
-    }
-}
-
-
-
+///Arreglo de los botones
 private void vincularBotones() {
     botones = new JButton[][] {
         {uno, dos, tres, cuatro},
@@ -253,6 +295,45 @@ private void vincularBotones() {
         }
     }
 }
+
+
+
+
+//Metodos de gane
+private boolean compararTableroConForma(int[][] forma) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (tablero[i][j] != forma[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+private boolean esGanador() {
+    return esGanadorForma1() || esGanadorForma2() || esGanadorForma3() || esGanadorForma4();
+}
+
+private boolean esGanadorForma1() {
+    int[][] forma1 = {{7, 8, 9, 10}, {6, 1, 2, 11}, {5, 4, 3, 12}, {0, 15, 14, 13}};
+    return compararTableroConForma(forma1);
+}
+private boolean esGanadorForma2() {
+    int[][] forma2 = {{15, 14, 13, 12}, {11, 10, 9, 8}, {7, 6, 5, 4}, {3, 2, 1, 0}};
+    return compararTableroConForma(forma2);
+}
+private boolean esGanadorForma3() {
+    int[][] forma3 = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 0, 15, 6}, {10, 9, 8, 7}};
+    return compararTableroConForma(forma3);
+}
+private boolean esGanadorForma4() {
+    int[][] forma4 = {{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 0}};
+    return compararTableroConForma(forma4);
+}
+
+
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -275,10 +356,10 @@ private void vincularBotones() {
         trece = new javax.swing.JButton();
         catorce = new javax.swing.JButton();
         quince = new javax.swing.JButton();
-        solucion = new javax.swing.JButton();
         vacio = new javax.swing.JButton();
         separador = new javax.swing.JSeparator();
         reiniciar = new javax.swing.JButton();
+        solucion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         movs = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
@@ -462,10 +543,7 @@ private void vincularBotones() {
         });
         getContentPane().add(quince, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 370, 90, 90));
 
-        solucion.setText("Ver Soluciones");
-        getContentPane().add(solucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 570, -1, -1));
-
-        vacio.setBackground(new java.awt.Color(0, 153, 153));
+        vacio.setBackground(new java.awt.Color(204, 204, 204));
         vacio.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         vacio.setForeground(new java.awt.Color(255, 255, 255));
         vacio.addActionListener(new java.awt.event.ActionListener() {
@@ -485,7 +563,18 @@ private void vincularBotones() {
                 reiniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 120, 40));
+        getContentPane().add(reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 120, 40));
+
+        solucion.setBackground(new java.awt.Color(204, 204, 255));
+        solucion.setFont(new java.awt.Font("FiraCode Nerd Font Mono Light", 1, 16)); // NOI18N
+        solucion.setText("Soluciones");
+        solucion.setBorder(new javax.swing.border.MatteBorder(null));
+        solucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                solucionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(solucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 120, 40));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -505,6 +594,21 @@ private void vincularBotones() {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void solucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solucionActionPerformed
+   
+// Crear una instancia de la clase soluciones
+    soluciones solucionesFrame = new soluciones();
+
+    // Configurar parámetros adicionales si es necesario
+    // Por ejemplo, si no los has configurado en el constructor de soluciones
+    solucionesFrame.setLocationRelativeTo(null);
+    solucionesFrame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+
+    // Mostrar el JFrame
+    solucionesFrame.setVisible(true);
+
+    }//GEN-LAST:event_solucionActionPerformed
 
     private void unoActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(0, 0);
