@@ -244,8 +244,7 @@ public class Juego extends javax.swing.JFrame {
     }
 }
 
-
-
+    
 // Método para actualizar el tablero y la interfaz
 private void actualizarTableroYInterfaz() {
     Nodo actual = listaLigada.cabeza;
