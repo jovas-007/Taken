@@ -4,6 +4,10 @@
  */
 package taken;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -245,6 +249,21 @@ public class Juego extends javax.swing.JFrame {
 }
 
     
+    
+    private void desactivarTablero() {
+    for (int i = 0; i < botones.length; i++) {
+        for (int j = 0; j < botones[i].length; j++) {
+            botones[i][j].setEnabled(false); // Deshabilita el botón
+        }
+    }
+}
+
+    
+    
+    
+    
+    
+    
 // Método para actualizar el tablero y la interfaz
 private void actualizarTableroYInterfaz() {
     Nodo actual = listaLigada.cabeza;
@@ -296,8 +315,6 @@ private void vincularBotones() {
 }
 
 
-
-
 //Metodos de gane
 private boolean compararTableroConForma(int[][] forma) {
     for (int i = 0; i < 4; i++) {
@@ -330,7 +347,6 @@ private boolean esGanadorForma4() {
     int[][] forma4 = {{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 0}};
     return compararTableroConForma(forma4);
 }
-
 
 
 
@@ -596,16 +612,23 @@ private boolean esGanadorForma4() {
 
     private void solucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solucionActionPerformed
    
-// Crear una instancia de la clase soluciones
-    soluciones solucionesFrame = new soluciones();
+                soluciones frame = new soluciones();
 
-    // Configurar parámetros adicionales si es necesario
-    // Por ejemplo, si no los has configurado en el constructor de soluciones
-    solucionesFrame.setLocationRelativeTo(null);
-    solucionesFrame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+                // Obtener las dimensiones de la pantalla
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                int width = screenSize.width;
+                int height = screenSize.height;
 
-    // Mostrar el JFrame
-    solucionesFrame.setVisible(true);
+                // Calcular la posición para que la ventana aparezca a la derecha con un margen
+                
+                int margenDerecho = 60; // Margen derecho en píxeles
+                int x = width - frame.getWidth() - margenDerecho;
+                int y = (height - frame.getHeight()) / 2; // Centrado verticalmente
+
+                // Establecer la posición de la ventana
+                frame.setLocation(x, y);
+
+                frame.setVisible(true);
 
     }//GEN-LAST:event_solucionActionPerformed
 
@@ -689,15 +712,6 @@ private boolean esGanadorForma4() {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-        // (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
-         * look and feel.
-         * For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
