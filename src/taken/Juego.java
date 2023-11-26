@@ -28,9 +28,21 @@ public class Juego extends javax.swing.JFrame {
     private JButton[][] botones; // Botones de la interfaz
     private ListaLigada listaLigada; 
     private int contadorMovimientos; 
+    
+    private final int[][] formaS1 = {{7, 8, 9, 10}, {6, 1, 2, 11}, {5, 4, 3, 12}, {0, 15, 14, 13}};
+    private final int[][] formaS2 = {{15, 14, 13, 12}, {11, 10, 9, 8}, {7, 6, 5, 4}, {3, 2, 1, 0}};
+    private final int[][] formaS3 = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 0, 15, 6}, {10, 9, 8, 7}};
+    private final int[][] formaS4 = {{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 0}};
+
 
     public Juego() {
         initComponents();
+        s1.setVisible(false);
+        s2.setVisible(false);
+        s3.setVisible(false);
+        s4.setVisible(false);
+        
+        
         inicializarTablero();
         vincularBotones();
         listaLigada = new ListaLigada(4);
@@ -349,6 +361,27 @@ private boolean esGanadorForma4() {
 }
 
 
+private void actualizarTableroInterfaz() {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            JButton botonActual = botones[i][j];
+            int valorActual = tablero[i][j];
+
+            if (valorActual != 0) {
+                botonActual.setText(String.valueOf(valorActual));
+                // Cambiar el color según si el número es par o impar
+                if (valorActual % 2 == 0) {
+                    botonActual.setBackground(new Color(0, 153, 153)); // Color para números pares
+                } else {
+                    botonActual.setBackground(new Color(0, 153, 255)); // Color para números impares
+                }
+            } else {
+                botonActual.setText(""); // Espacio vacío
+                botonActual.setBackground(Color.GRAY); // Color para el espacio vacío
+            }
+        }
+    }
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -375,6 +408,10 @@ private boolean esGanadorForma4() {
         separador = new javax.swing.JSeparator();
         reiniciar = new javax.swing.JButton();
         solucion = new javax.swing.JButton();
+        s1 = new javax.swing.JButton();
+        s2 = new javax.swing.JButton();
+        s3 = new javax.swing.JButton();
+        s4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         movs = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
@@ -390,7 +427,7 @@ private boolean esGanadorForma4() {
         Titulo.setForeground(new java.awt.Color(204, 204, 204));
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo.setText("Juego del 15 (Taken)");
-        getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 13, 425, 48));
+        getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 425, 48));
 
         uno.setBackground(new java.awt.Color(0, 153, 255));
         uno.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
@@ -591,6 +628,46 @@ private boolean esGanadorForma4() {
         });
         getContentPane().add(solucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 120, 40));
 
+        s1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        s1.setText("Solucion 1");
+        s1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        s1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(s1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, -1, -1));
+
+        s2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        s2.setText("Solucion 2");
+        s2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        s2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(s2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, -1, -1));
+
+        s3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        s3.setText("Solucion 3");
+        s3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        s3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(s3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, -1, -1));
+
+        s4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        s4.setText("Solucion 4");
+        s4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        s4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(s4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 610, -1, -1));
+
         jScrollPane1.setBackground(new java.awt.Color(0, 153, 153));
 
         movs.setEditable(false);
@@ -605,7 +682,7 @@ private boolean esGanadorForma4() {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 280, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/DALL·E 2023-11-22 23.56.57 - A simple, wide background with a smooth gradient, using slightly darker shades of blue and green. The background should be completely plain, without a.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -90, 470, 720));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -90, 470, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -629,8 +706,70 @@ private boolean esGanadorForma4() {
                 frame.setLocation(x, y);
 
                 frame.setVisible(true);
+                
+                // Hacer visibles los botones
+                s1.setVisible(true);
+                s2.setVisible(true);
+                s3.setVisible(true);
+                s4.setVisible(true);
 
     }//GEN-LAST:event_solucionActionPerformed
+
+    private void s4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s4ActionPerformed
+        // Actualiza el tablero con los valores de formaS4
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                tablero[i][j] = formaS4[i][j];
+            }
+        }
+        actualizarTableroInterfaz();
+        if(esGanador()){
+        mostrarMensajeGanador();    
+        }
+      
+    }//GEN-LAST:event_s4ActionPerformed
+
+    private void s1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s1ActionPerformed
+        // Actualiza el tablero con los valores de formaS1
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                tablero[i][j] = formaS1[i][j];
+            }
+        }
+        actualizarTableroInterfaz();
+        if(esGanador()){
+        mostrarMensajeGanador();    
+        }
+      
+    }//GEN-LAST:event_s1ActionPerformed
+
+    private void s2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s2ActionPerformed
+        // Actualiza el tablero con los valores de formaS2
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                tablero[i][j] = formaS2[i][j];
+            }
+        }
+        actualizarTableroInterfaz();
+        if(esGanador()){
+        mostrarMensajeGanador();    
+        }
+      
+    }//GEN-LAST:event_s2ActionPerformed
+
+    private void s3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s3ActionPerformed
+        // Actualiza el tablero con los valores de formaS3
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                tablero[i][j] = formaS3[i][j];
+            }
+        }
+        actualizarTableroInterfaz();
+        if(esGanador()){
+        mostrarMensajeGanador();    
+        }
+      
+    }//GEN-LAST:event_s3ActionPerformed
 
     private void unoActionPerformed(java.awt.event.ActionEvent evt) {
         moverFicha(0, 0);
@@ -754,6 +893,10 @@ private boolean esGanadorForma4() {
     private javax.swing.JButton once;
     private javax.swing.JButton quince;
     private javax.swing.JButton reiniciar;
+    private javax.swing.JButton s1;
+    private javax.swing.JButton s2;
+    private javax.swing.JButton s3;
+    private javax.swing.JButton s4;
     private javax.swing.JButton seis;
     private javax.swing.JSeparator separador;
     private javax.swing.JButton siete;

@@ -38,10 +38,10 @@ public class soluciones extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Titulo = new javax.swing.JLabel();
-        sol1 = new javax.swing.JButton();
-        sol2 = new javax.swing.JButton();
-        sol3 = new javax.swing.JButton();
-        sol4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -53,45 +53,21 @@ public class soluciones extends javax.swing.JFrame {
 
         Titulo.setBackground(new java.awt.Color(0, 204, 204));
         Titulo.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 2, 36)); // NOI18N
-        Titulo.setForeground(new java.awt.Color(102, 102, 102));
+        Titulo.setForeground(new java.awt.Color(0, 51, 51));
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo.setText("SOLUCIONES POSIBLES");
 
-        sol1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        sol1.setText("Ver solucion");
-        sol1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        sol1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sol1ActionPerformed(evt);
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 3, 20)); // NOI18N
+        jLabel3.setText("Solucion no.1");
 
-        sol2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        sol2.setText("Ver solucion");
-        sol2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        sol2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sol2ActionPerformed(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 3, 20)); // NOI18N
+        jLabel4.setText("Solucion no.2");
 
-        sol3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        sol3.setText("Ver solucion");
-        sol3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        sol3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sol3ActionPerformed(evt);
-            }
-        });
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 3, 20)); // NOI18N
+        jLabel5.setText("Solucion no.3");
 
-        sol4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        sol4.setText("Ver solucion");
-        sol4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        sol4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sol4ActionPerformed(evt);
-            }
-        });
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 3, 20)); // NOI18N
+        jLabel6.setText("Solucion no.4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,22 +77,22 @@ public class soluciones extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(269, 269, 269))
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(sol1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124)
-                .addComponent(sol2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                .addComponent(sol3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128)
-                .addComponent(sol4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
+                .addGap(52, 52, 52)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,34 +103,17 @@ public class soluciones extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sol1)
-                    .addComponent(sol2)
-                    .addComponent(sol3)
-                    .addComponent(sol4))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void sol1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sol1ActionPerformed
-        
-    
-    }//GEN-LAST:event_sol1ActionPerformed
-
-    private void sol2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sol2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sol2ActionPerformed
-
-    private void sol3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sol3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sol3ActionPerformed
-
-    private void sol4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sol4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sol4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,9 +156,9 @@ public class soluciones extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton sol1;
-    private javax.swing.JButton sol2;
-    private javax.swing.JButton sol3;
-    private javax.swing.JButton sol4;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }
